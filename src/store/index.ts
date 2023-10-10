@@ -7,7 +7,7 @@ import UserReducer from './slices/user/user.slice'
 export const store = configureStore<AppState>({
   reducer: {
     webSocket: webSocketReducer,
-    messages: UserReducer,
+    user: UserReducer,
   },
   middleware: [webSocketMiddleware],
   devTools: true

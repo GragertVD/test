@@ -5,7 +5,9 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
-import Persik_ts from './panels/Persik_ts';
+import Persik_ts from './panels/Error';
+import Error from './panels/Error';
+import Wait from './panels/Wait';
 
 const App = () => {
   const [activePanel, setActivePanel] = useState(['home']);
@@ -41,7 +43,8 @@ const App = () => {
               <View activePanel={activePanel[activePanel.length - 1]}>
                 <Home id='home' fetchedUser={fetchedUser} go={go} />
                 <Persik id='persik' go={go} />
-                <Persik_ts id='persik_ts' go={go} />
+                <Error id='error' go={go} text='Error text' />
+                <Wait id='wait' go={go}/>
               </View>
             </SplitCol>
           </SplitLayout>
