@@ -2,14 +2,14 @@ import { webSocketMiddleware } from './middleware/webSocket.middleware';
 import { configureStore } from "@reduxjs/toolkit";
 import { AppState } from "./types";
 import webSocketReducer from './slices/webSocket/webSocket.slice'
-import UserReducer from './slices/user/user.slice'
+import ServerReducer from './slices/server/user.slice'
 
 export const store = configureStore<AppState>({
   reducer: {
     webSocket: webSocketReducer,
-    user: UserReducer,
+    server: ServerReducer,
   },
-  middleware: [webSocketMiddleware],
+  // middleware: [webSocketMiddleware],
   devTools: true
 })
 

@@ -12,8 +12,8 @@ interface WaitProps {
 };
 
 const Wait: React.FC<WaitProps> = props => (
-  <View activePanel='error'>
-    <Panel id='error'>
+  <View activePanel='wait'>
+    <Panel id='wait'>
       {/* <PanelHeaderSimple separator={false} /> */}
       <Placeholder
         icon={<Icon56HideOutline style={{ color: '#FF9800' }} />}

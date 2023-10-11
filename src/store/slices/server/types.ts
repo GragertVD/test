@@ -1,6 +1,6 @@
 import { MessageI } from '../../../types/Message';
 
-export interface UserState {
+export interface ServerState {
   messages: MessageI[],
   inputMessage: string
 }

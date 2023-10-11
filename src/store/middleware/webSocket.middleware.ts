@@ -1,5 +1,4 @@
 import { MessageI } from './../../types/Message';
-import { UserState } from '../slices/user/types';
 import { WebSocketState } from './../slices/webSocket/types';
 import { Middleware } from "@reduxjs/toolkit";
 import { io, Socket } from "socket.io-client";
@@ -7,7 +6,7 @@ import { AppState } from "../types";
 import { typeConnect } from '../../types/typeConnect';
 // import appConfig from '../../app-config.config.json';
 import { ClientToServerListen, ServerToClientListen } from './types';
-import { addMessage, changeInputMessage } from '../slices/user/user.slice';
+import { addMessage, changeInputMessage } from '../slices/server/user.slice';
 // import { v4 } from 'uuid'
 let socket: Socket<ServerToClientListen, ClientToServerListen>
 
