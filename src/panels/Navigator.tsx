@@ -13,7 +13,6 @@ interface WaitProps {
 };
 
 const Navigator: React.FC<WaitProps> = props => {
-  console.log('Navigator render');
   
   return (
     <View activePanel='navigator'>

@@ -1,6 +1,6 @@
 import { MessageI } from '../../../types/Message';
 
 export interface ServerState {
-  messages: MessageI[],
+  messages: String[],
   inputMessage: string
 }

@@ -4,8 +4,8 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState: ServerState = {
-  messages: [],
-  inputMessage: ''
+  messages: ['server start'],
+  inputMessage: 'server start'
 }
 
 
@@ -34,12 +34,13 @@ export const getUser = createAsyncThunk(
   'server/getUser',
   async function () {
 
-    console.log('start getUSer');
+    // console.log('start getUSer');
+    // return "return data"
     
     try {
       const response =
         query(27303690, 'getUser', { ref: null }, (data: any) => {
-          // console.log('succes', data);
+          console.log('succes', data);
           return data;
         },
           () => { throw new Error('123') });
@@ -54,25 +55,28 @@ const ServerSlice = createSlice({
   name: 'server',
   initialState,
   reducers: {
-    addMessage(state, action: PayloadAction<{ message: MessageI }>) {
+    addMessage(state, action: PayloadAction<{ message: String }>) {
+      console.log("message");
+      
       state.messages.push(action.payload.message)
     },
     changeInputMessage(state, action: PayloadAction<{ body: string }>) {
       state.inputMessage = action.payload.body
     },
   },
-  // extraReducers: {
-  //   [getUser.pending+'']: (state) =>{
-  //     console.log('pending');
-  //   },
-  //   [getUser.fulfilled+'']: (state, action) =>{
-  //     console.log('fulfield', action.payload);
-  //     state.inputMessage = 'succes';
-  //   },
-  //   [getUser.rejected+'']: (state, action) =>{
-  //     console.log('rejected', action.payload);
-  //   },
-  // },
+  extraReducers: {
+    [getUser.pending+'']: (state) =>{
+      console.log('pending');
+    },
+    [getUser.fulfilled+'']: (state, action) =>{
+      console.log('fulfield', action.payload);
+      state.inputMessage = 'succes';
+    },
+    [getUser.rejected+'']: (state, action) =>{
+      console.log('rejected', action.payload);
+    },
+  },
 })
+
 export const { addMessage, changeInputMessage } = ServerSlice.actions
 export default ServerSlice.reducer

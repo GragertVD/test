@@ -6,11 +6,11 @@ import ServerReducer from './slices/server/user.slice'
 
 export const store = configureStore<AppState>({
   reducer: {
-    webSocket: webSocketReducer,
+    // webSocket: webSocketReducer,
     server: ServerReducer,
   },
   // middleware: [webSocketMiddleware],
-  devTools: true
+  // devTools: true
 })
 
 export type RootState = ReturnType<typeof store.getState>

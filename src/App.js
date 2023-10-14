@@ -11,7 +11,7 @@ import Wait from './panels/Wait';
 import axios from 'axios';
 import Navigator from './panels/Navigator';
 import { useDispatch } from 'react-redux';
-import { getUser } from './store/slices/server/user.slice';
+import { addMessage, getUser } from './store/slices/server/user.slice';
 import { useAppDispatch } from './hooks/useAppDispatch';
 import { useAppSelector } from './hooks/useAppSelector';
 
@@ -43,16 +43,20 @@ const App = () => {
   const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
   // const dispatch = useAppDispatch(getUser());
-  // const state = useAppSelector();
-// console.log(state);
+  // const state = useAppSelector(state => state.server);
+  // console.log(state);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     async function fetchData() {
       console.log('start');
       const user = await bridge.send('VKWebAppGetUserInfo');
       setUser(user);
       setPopout(null);
-      // console.log(user);
 
+      dispatch(getUser())
+      // console.log(user);
+      
       // query(user.id, 'getUser', { ref: null }, (data) => {
       //   console.log('succes', data);
       // });
